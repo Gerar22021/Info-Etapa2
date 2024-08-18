@@ -6,15 +6,21 @@ class Plato():
         self.disponible = True
 
     def __str__(self):
-        return self.nombre
+        return f'Nombre del plato: {self.nombre}\nReceta: {self.receta}\nIngredientes: {self.ingredientes}'
 
 class Ingrediente():
-    pass
+    def __init__(self, nombre, cantidad) -> None:
+        self.nombre = nombre
+        self.cantidad = cantidad
 
 class Menu():
-    def __init__(self, platos):
-        self.platos = [platos]
+
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.platos = []
 
 class Almacen():
-    pass
+    def __init__(self, nombre) -> None:
+        self.nombre = nombre
+
 

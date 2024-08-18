@@ -13,6 +13,6 @@
 
 from Clases import Plato,Ingrediente,Menu,Almacen
 
-plato1 = Plato('guiso')
+plato1 = Plato('guiso', 'receta', 'cebolla', 'morron', 'papa')
 
 print(plato1)
