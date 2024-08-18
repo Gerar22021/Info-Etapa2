@@ -12,3 +12,7 @@
 #---- almacen
 
 from Clases import Plato,Ingrediente,Menu,Almacen
+
+plato1 = Plato('guiso')
+
+print(plato1)

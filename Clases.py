@@ -1,15 +1,20 @@
-def Plato():
-    pass
-
-def Ingrediente():
-    pass
-
-def Menu():
-    def __init__(self, nombre, ingredientes, receta):
+class Plato():
+    def __init__(self, nombre, receta,*args):
         self.nombre = nombre
-        self.ingredientes = [ingredientes]
         self.receta = receta
+        self.ingredientes = [*args]
+        self.disponible = True
 
-def Almacen():
+    def __str__(self):
+        return self.nombre
+
+class Ingrediente():
+    pass
+
+class Menu():
+    def __init__(self, platos):
+        self.platos = [platos]
+
+class Almacen():
     pass
 
