@@ -1,8 +1,8 @@
 class Plato():
-    def __init__(self, nombre= None, receta= None,*args) -> None:
+    def __init__(self, nombre= None, receta= None, ingredientes= None) -> None:
         self.nombre = nombre
         self.receta = receta
-        self.ingredientes = [*args]
+        self.ingredientes = ingredientes
         self.disponible = True
 
     def getNombre(self):

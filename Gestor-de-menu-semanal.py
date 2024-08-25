@@ -17,8 +17,9 @@
 # Precargando datos iniciales para mostrar al abrir el programa
 from Clases import Plato,Ingrediente,Menu,Almacen
 
-plato1 = Plato('Guiso de arroz con pollo', '1)- Dorar el pollo en un poco de aceite. Retirar y reservar.\n2)- Dorar la cebolla picada en la misma olla donde doramos el pollo.\n3)- Agregar el tomate triturado, el puré, los condimentos a gusto, el azúcar y 1/2 litro de agua. Volver a introducir el pollo y dejar cocinar 20 minutos.\n4)- Luego agregar el arroz, el caldito, revolver y dejar cocinar hasta que el arroz este cocido al punto deseado. Mientras se va cociendo, hay que ir agregando agua y revolviendo de tanto en tanto para controlar y evitar que la preparación se seque.\n5)- Finalmente incorporar las arvejas para que se calienten, probar, alinear de sal y listo!...A comer!', '1 pollo trozado en 8', '1 cebolla grande', '1 morrón', '1 tomate', )
-plato2 = Plato('Tarta de atun', '1)-Picar la cebolla, el morrón y el ajo y rehogarlos en aceite.\n2)-Cuando la cebolla esté transparente, agregar el tomate fresco picado y cocer hasta que tome un color rojo oscuro.\n3)-Agregar el atún y remover hasta integrar. Incorporar también la cucharada de puré de tomates.\n4)-Incorporar los huevos batidos y salpimentar. Agregar el orégano (muy poco).\n5)-Si te gustan, agregar las aceitunas picadas.\n6)-Colocar todo en una tartera chica.\n7)-Cerrar los bordes y llover con semillas de sésamo arriba.\n8)-Llevar a horno fuerte hasta que el hojaldre se vea dorado. ¡Listo! Ya tenés tu tarta de atún.', '1 masa de hojaldre', '1/2 cebolla', '1/2 morrón rojo', '1 diente de ajo', '1 tomate chico', '1 cda. de puré de tomates', '2 latas de atún', '1 papa chica', '1 pizca de orégano', '2 huevos', 'Aceitunas (opcional)', 'Semillas de sésamo', 'Sal, pimienta y aceite.')
+plato0 = Plato('---------PLATOS---------')
+plato1 = Plato('Guiso de arroz con pollo', '1)- Dorar el pollo en un poco de aceite. Retirar y reservar.\n2)- Dorar la cebolla picada en la misma olla donde doramos el pollo.\n3)- Agregar el tomate triturado, el puré, los condimentos a gusto, el azúcar y 1/2 litro de agua. Volver a introducir el pollo y dejar cocinar 20 minutos.\n4)- Luego agregar el arroz, el caldito, revolver y dejar cocinar hasta que el arroz este cocido al punto deseado. Mientras se va cociendo, hay que ir agregando agua y revolviendo de tanto en tanto para controlar y evitar que la preparación se seque.\n5)- Finalmente incorporar las arvejas para que se calienten, probar, alinear de sal y listo!...A comer!', '1 pollo trozado en 8\n1 cebolla grande\n1 morrón\n1 tomate')
+plato2 = Plato('Tarta de atun', '1)-Picar la cebolla, el morrón y el ajo y rehogarlos en aceite.\n2)-Cuando la cebolla esté transparente, agregar el tomate fresco picado y cocer hasta que tome un color rojo oscuro.\n3)-Agregar el atún y remover hasta integrar. Incorporar también la cucharada de puré de tomates.\n4)-Incorporar los huevos batidos y salpimentar. Agregar el orégano (muy poco).\n5)-Si te gustan, agregar las aceitunas picadas.\n6)-Colocar todo en una tartera chica.\n7)-Cerrar los bordes y llover con semillas de sésamo arriba.\n8)-Llevar a horno fuerte hasta que el hojaldre se vea dorado. ¡Listo! Ya tenés tu tarta de atún.', '1 masa de hojaldre\n1/2 cebolla\n1/2 morrón rojo\n1 diente de ajo\n1 tomate chico\n1 cda. de puré de tomates\n2 latas de atún\n1 papa chica\n1 pizca de orégano\n2 huevos\nAceitunas (opcional)\nSemillas de sésamo\nSal, pimienta y aceite.')
 plato3 = Plato()
 plato4 = Plato()
 plato5 = Plato()
@@ -34,12 +35,14 @@ plato14 = Plato()
 
 listaDePlatos = []
 
+listaDePlatos.append(plato0)
 listaDePlatos.append(plato1)
 listaDePlatos.append(plato2)
 
 listaMenus = []
 
 menu1 = Menu('Semana 1')
+menu1.platos.append(plato0)
 menu1.platos.append(plato1)
 menu1.platos.append(plato2)
 menu1.platos.append(plato3)
@@ -61,7 +64,7 @@ ventana.geometry('400x200')
 def agregarPlato():
     ventana = tk.Toplevel()
     ventana.title('Agregar plato')
-    ventana.geometry('400x500')
+    ventana.geometry('400x600')
 
     etiqueta1 = tk.Label(ventana, text= 'Nombre:')
     etiqueta1.grid(row=1,column=1)
@@ -78,36 +81,43 @@ def agregarPlato():
     ingreso_receta = tk.Text(ventana, width=20, height=10)
     ingreso_receta.grid(row=3, column=2)
     lista_platos = []
+
     
     def agregar_tarea():
         nombre = nombrePlato.get()
+        receta = ingreso_receta.get('1.0', 'end-1c')
+        Ingredientes = ingreso_ingredientes.get('1.0', 'end-1c')
         if nombre:
-            platoX = Plato(nombre)
+            platoX = Plato(nombre,receta,Ingredientes)
+            print(platoX)
             listaDePlatos.append(platoX)
             menu1.platos.append(platoX)
             lista_platos.insert(tk.END, platoX.nombre)
             nombrePlato.delete(0, tk.END)
+            ingreso_receta.delete('1.0', 'end-1c')
+            ingreso_ingredientes.delete('1.0', 'end-1c')
             
 
     boton_agregar = tk.Button(ventana, text = 'Agregar', command = agregar_tarea)
-    boton_agregar.grid(row=4, column=2)
+    boton_agregar.grid(row=4, column=1)
     
     def eliminar_tarea():
         seleccion = lista_platos.curselection()
         if seleccion:
-            print(seleccion)
-            lista_platos.delete(seleccion)
-            for x in listaDePlatos:
-                if x.nombre == seleccion:
-                    listaDePlatos.remove(x)
+             for c in seleccion:
+                if int(c):
+                    listaDePlatos.pop(c)
+                    lista_platos.delete(seleccion)
 
     boton_eliminar = tk.Button(ventana, text = 'Eliminar', command = eliminar_tarea)
-    boton_eliminar.grid(row=5, column=2)
+    boton_eliminar.grid(row=5, column=1)
 
     lista_platos = tk.Listbox(ventana)
     for plato in listaDePlatos:
             lista_platos.insert(tk.END, f'{plato.nombre}')
-    lista_platos.grid(row=6, column=2)
+    lista_platos.grid(row=6, column=1)
+
+    
 
 def agregarMenu():
     ventana = tk.Toplevel()
