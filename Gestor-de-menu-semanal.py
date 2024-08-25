@@ -157,6 +157,13 @@ def modificarPlato():
             lista.insert(tk.END, f'{plato.nombre}')
     lista.pack(side = tk.LEFT, fill =tk.BOTH)
     scrollbar .config(command = lista.yview)
+
+    def Modificar_plato():
+        pass
+
+    boton_modificar = tk.Button(ventana, text = 'Modificar', command = Modificar_plato)
+    boton_modificar.pack()
+
     ventana.mainloop ()
 
 def modificarMenu():
