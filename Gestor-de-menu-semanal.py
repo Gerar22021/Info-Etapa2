@@ -117,6 +117,22 @@ def agregarPlato():
             lista_platos.insert(tk.END, f'{plato.nombre}')
     lista_platos.grid(row=6, column=1)
 
+    def mostrar():
+        seleccion = lista_platos.curselection()
+        if seleccion:
+             for c in seleccion:
+                if int(c):
+                    etiquetaNombre = tk.Label(ventana, text= listaDePlatos[c].nombre)
+                    etiquetaNombre.grid(row=6,column=2, ipadx=0, ipady=0)
+                    etiquetaIngredientes = tk.Label(ventana, text= listaDePlatos[c].ingredientes)
+                    etiquetaIngredientes.grid(row=6,column=3, ipadx=0, ipady=0)
+                    etiquetaReceta = tk.Label(ventana, text= listaDePlatos[c].receta)
+                    etiquetaReceta.grid(row=6,column=4, ipadx=0, ipady=0)
+                    print(listaDePlatos[c].nombre)
+
+    boton_mostrar = tk.Button(ventana, text = 'Mostrar', command = mostrar)
+    boton_mostrar.grid(row=7, column=1)
+
     
 
 def agregarMenu():
