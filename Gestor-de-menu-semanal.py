@@ -14,7 +14,7 @@
 ##### CODIGO DE PRUEBAS ####
 
 
-
+# Precargando datos iniciales para mostrar al abrir el programa
 from Clases import Plato,Ingrediente,Menu,Almacen
 
 plato1 = Plato('Guiso de arroz con pollo', '1)- Dorar el pollo en un poco de aceite. Retirar y reservar.\n2)- Dorar la cebolla picada en la misma olla donde doramos el pollo.\n3)- Agregar el tomate triturado, el puré, los condimentos a gusto, el azúcar y 1/2 litro de agua. Volver a introducir el pollo y dejar cocinar 20 minutos.\n4)- Luego agregar el arroz, el caldito, revolver y dejar cocinar hasta que el arroz este cocido al punto deseado. Mientras se va cociendo, hay que ir agregando agua y revolviendo de tanto en tanto para controlar y evitar que la preparación se seque.\n5)- Finalmente incorporar las arvejas para que se calienten, probar, alinear de sal y listo!...A comer!', '1 pollo trozado en 8', '1 cebolla grande', '1 morrón', '1 tomate', )
@@ -31,9 +31,13 @@ plato11 = Plato()
 plato12 = Plato()
 plato13 = Plato()
 plato14 = Plato()
-# print(plato1)
 
-listaMenu = []
+listaDePlatos = []
+
+listaDePlatos.append(plato1)
+listaDePlatos.append(plato2)
+
+listaMenus = []
 
 menu1 = Menu('Semana 1')
 menu1.platos.append(plato1)
@@ -45,8 +49,9 @@ menu1.platos.append(plato6)
 menu1.platos.append(plato7)
 menu1.platos.append(plato8)
 
-listaMenu.append(menu1)
+listaMenus.append(menu1)
 
+# IMPLEMENTANDO LA INTERFAZ GRÁFICA
 
 import tkinter as tk
 ventana = tk.Tk()
@@ -56,39 +61,53 @@ ventana.geometry('400x200')
 def agregarPlato():
     ventana = tk.Toplevel()
     ventana.title('Agregar plato')
-    ventana.geometry('500x300')
+    ventana.geometry('400x500')
 
     etiqueta1 = tk.Label(ventana, text= 'Nombre:')
     etiqueta1.grid(row=1,column=1)
-    ingreso_tarea = tk.Entry(ventana, width=26)
-    ingreso_tarea.grid(row=1, column=2, padx=0)
+    nombrePlato = tk.Entry(ventana, width=26)
+    nombrePlato.grid(row=1, column=2, padx=0)
     
     etiqueta2 = tk.Label(ventana, text= 'Ingredientes:')
     etiqueta2.grid(row=2,column=1,padx=20)
-    ingreso_tarea = tk.Text(ventana, width=20, height=10)
-    ingreso_tarea.grid(row=2, column=2)
+    ingreso_ingredientes = tk.Text(ventana, width=20, height=10)
+    ingreso_ingredientes.grid(row=2, column=2)
 
-    etiqueta2 = tk.Label(ventana, text= 'Ingredientes:')
-    etiqueta2.grid(row=2,column=1,padx=20)
-    ingreso_tarea = tk.Text(ventana, width=20, height=10)
-    ingreso_tarea.grid(row=2, column=2)
-
-    lista_tareas = []
+    etiqueta2 = tk.Label(ventana, text= 'Receta:')
+    etiqueta2.grid(row=3,column=1,padx=20)
+    ingreso_receta = tk.Text(ventana, width=20, height=10)
+    ingreso_receta.grid(row=3, column=2)
+    lista_platos = []
+    
     def agregar_tarea():
-        tarea = ingreso_tarea.get()
-        if tarea:
-            lista_tareas.insert(tk.END, tarea)
-        ingreso_tarea.delete(0, tk.END)
+        nombre = nombrePlato.get()
+        if nombre:
+            platoX = Plato(nombre)
+            listaDePlatos.append(platoX)
+            menu1.platos.append(platoX)
+            lista_platos.insert(tk.END, platoX.nombre)
+            nombrePlato.delete(0, tk.END)
+            
+
     boton_agregar = tk.Button(ventana, text = 'Agregar', command = agregar_tarea)
-    boton_agregar.pack()
+    boton_agregar.grid(row=4, column=2)
+    
     def eliminar_tarea():
-        seleccion = lista_tareas.curselection()
+        seleccion = lista_platos.curselection()
         if seleccion:
-            lista_tareas.delete(seleccion)
+            print(seleccion)
+            lista_platos.delete(seleccion)
+            for x in listaDePlatos:
+                if x.nombre == seleccion:
+                    listaDePlatos.remove(x)
+
     boton_eliminar = tk.Button(ventana, text = 'Eliminar', command = eliminar_tarea)
-    boton_eliminar.pack()
-    lista_tareas = tk.Listbox(ventana)
-    lista_tareas.pack()
+    boton_eliminar.grid(row=5, column=2)
+
+    lista_platos = tk.Listbox(ventana)
+    for plato in listaDePlatos:
+            lista_platos.insert(tk.END, f'{plato.nombre}')
+    lista_platos.grid(row=6, column=2)
 
 def agregarMenu():
     ventana = tk.Toplevel()
@@ -124,8 +143,8 @@ def modificarPlato():
     scrollbar .pack(side = tk.RIGHT, fill =tk.Y)
     lista = tk.Listbox(marco, yscrollcommand= scrollbar .set, width=100)
 
-    for i in range(5):
-            lista.insert(tk.END, f'{menu1.getPlatos(i)}')
+    for plato in listaDePlatos:
+            lista.insert(tk.END, f'{plato.nombre}')
     lista.pack(side = tk.LEFT, fill =tk.BOTH)
     scrollbar .config(command = lista.yview)
     ventana.mainloop ()
@@ -140,7 +159,7 @@ def modificarMenu():
     scrollbar .pack(side = tk.RIGHT, fill =tk.Y)
     lista = tk.Listbox(marco, yscrollcommand= scrollbar .set)
     for i in range(1):
-        lista.insert(tk.END, f'{listaMenu[i].nombre}')
+        lista.insert(tk.END, f'{listaMenus[i].nombre}')
     lista.pack(side = tk.LEFT, fill =tk.BOTH)
     scrollbar .config(command = lista.yview)
     ventana.mainloop ()
