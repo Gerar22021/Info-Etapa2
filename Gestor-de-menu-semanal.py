@@ -33,6 +33,8 @@ plato13 = Plato()
 plato14 = Plato()
 # print(plato1)
 
+listaMenu = []
+
 menu1 = Menu('Semana 1')
 menu1.platos.append(plato1)
 menu1.platos.append(plato2)
@@ -43,7 +45,7 @@ menu1.platos.append(plato6)
 menu1.platos.append(plato7)
 menu1.platos.append(plato8)
 
-print(menu1.getPlatos(0))
+listaMenu.append(menu1)
 
 
 import tkinter as tk
@@ -54,9 +56,23 @@ ventana.geometry('400x200')
 def agregarPlato():
     ventana = tk.Toplevel()
     ventana.title('Agregar plato')
-    ventana.geometry('400x200')
-    ingreso_tarea = tk.Entry(ventana)
-    ingreso_tarea.pack()
+    ventana.geometry('500x300')
+
+    etiqueta1 = tk.Label(ventana, text= 'Nombre:')
+    etiqueta1.grid(row=1,column=1)
+    ingreso_tarea = tk.Entry(ventana, width=26)
+    ingreso_tarea.grid(row=1, column=2, padx=0)
+    
+    etiqueta2 = tk.Label(ventana, text= 'Ingredientes:')
+    etiqueta2.grid(row=2,column=1,padx=20)
+    ingreso_tarea = tk.Text(ventana, width=20, height=10)
+    ingreso_tarea.grid(row=2, column=2)
+
+    etiqueta2 = tk.Label(ventana, text= 'Ingredientes:')
+    etiqueta2.grid(row=2,column=1,padx=20)
+    ingreso_tarea = tk.Text(ventana, width=20, height=10)
+    ingreso_tarea.grid(row=2, column=2)
+
     lista_tareas = []
     def agregar_tarea():
         tarea = ingreso_tarea.get()
@@ -108,9 +124,8 @@ def modificarPlato():
     scrollbar .pack(side = tk.RIGHT, fill =tk.Y)
     lista = tk.Listbox(marco, yscrollcommand= scrollbar .set, width=100)
 
-    for i in range(100):
-            numero = i+2
-            lista.insert(tk.END, f'{menu1.getPlatos(numero)}')
+    for i in range(5):
+            lista.insert(tk.END, f'{menu1.getPlatos(i)}')
     lista.pack(side = tk.LEFT, fill =tk.BOTH)
     scrollbar .config(command = lista.yview)
     ventana.mainloop ()
@@ -124,8 +139,8 @@ def modificarMenu():
     scrollbar = tk.Scrollbar (marco)
     scrollbar .pack(side = tk.RIGHT, fill =tk.Y)
     lista = tk.Listbox(marco, yscrollcommand= scrollbar .set)
-    for i in range(0,100):
-            lista.insert(tk.END, f'Elemento{i+1}')
+    for i in range(1):
+        lista.insert(tk.END, f'{listaMenu[i].nombre}')
     lista.pack(side = tk.LEFT, fill =tk.BOTH)
     scrollbar .config(command = lista.yview)
     ventana.mainloop ()
