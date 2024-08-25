@@ -5,6 +5,9 @@ class Plato():
         self.ingredientes = [*args]
         self.disponible = True
 
+    def getNombre(self):
+        return f'{self.nombre}'
+
     def __str__(self):
         return f'Nombre del plato: {self.nombre}\nIngredientes: {self.ingredientes}\nReceta: \n{self.receta}\nDisponible: {self.disponible}'
 
@@ -19,6 +22,10 @@ class Menu():
     def __init__(self, nombre) -> None:
         self.nombre = nombre
         self.platos = []
+
+    def getPlatos(self, x):
+        return self.platos[x].getNombre()
+
 
 class Almacen():
     def __init__(self, nombre) -> None:

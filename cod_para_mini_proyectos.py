@@ -48,7 +48,7 @@ lista.pack(side = tk.LEFT, fill =tk.BOTH)
 scrollbar .config(command = lista.yview)
 ventana.mainloop () """
 
-# Proyecto 4: Lista de tareas
+""" # Proyecto 4: Lista de tareas
 import tkinter as tk
 ventana = tk.Tk()
 ventana.title('Lista de tareas')
@@ -71,4 +71,4 @@ boton_eliminar = tk.Button(ventana, text = 'Eliminar tarea', command = eliminar_
 boton_eliminar.pack()
 lista_tareas = tk.Listbox(ventana)
 lista_tareas.pack()
-ventana.mainloop()
+ventana.mainloop() """
