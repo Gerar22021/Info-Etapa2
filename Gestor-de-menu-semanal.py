@@ -18,8 +18,8 @@
 from Clases import Plato,Ingrediente,Menu,Almacen
 
 plato0 = Plato('---------PLATOS---------')
-plato1 = Plato('Guiso de arroz con pollo', '1)- Dorar el pollo en un poco de aceite. Retirar y reservar.\n2)- Dorar la cebolla picada en la misma olla donde doramos el pollo.\n3)- Agregar el tomate triturado, el puré, los condimentos a gusto, el azúcar y 1/2 litro de agua. Volver a introducir el pollo y dejar cocinar 20 minutos.\n4)- Luego agregar el arroz, el caldito, revolver y dejar cocinar hasta que el arroz este cocido al punto deseado. Mientras se va cociendo, hay que ir agregando agua y revolviendo de tanto en tanto para controlar y evitar que la preparación se seque.\n5)- Finalmente incorporar las arvejas para que se calienten, probar, alinear de sal y listo!...A comer!', '1 pollo trozado en 8\n1 cebolla grande\n1 morrón\n1 tomate')
-plato2 = Plato('Tarta de atun', '1)-Picar la cebolla, el morrón y el ajo y rehogarlos en aceite.\n2)-Cuando la cebolla esté transparente, agregar el tomate fresco picado y cocer hasta que tome un color rojo oscuro.\n3)-Agregar el atún y remover hasta integrar. Incorporar también la cucharada de puré de tomates.\n4)-Incorporar los huevos batidos y salpimentar. Agregar el orégano (muy poco).\n5)-Si te gustan, agregar las aceitunas picadas.\n6)-Colocar todo en una tartera chica.\n7)-Cerrar los bordes y llover con semillas de sésamo arriba.\n8)-Llevar a horno fuerte hasta que el hojaldre se vea dorado. ¡Listo! Ya tenés tu tarta de atún.', '1 masa de hojaldre\n1/2 cebolla\n1/2 morrón rojo\n1 diente de ajo\n1 tomate chico\n1 cda. de puré de tomates\n2 latas de atún\n1 papa chica\n1 pizca de orégano\n2 huevos\nAceitunas (opcional)\nSemillas de sésamo\nSal, pimienta y aceite.')
+plato1 = Plato('Guiso de arroz con pollo', '1)- Dorar el pollo en un poco de aceite. Retirar y reservar.\n2)- Dorar la cebolla picada en la misma olla donde doramos el pollo.\n3)- Agregar el tomate triturado, el puré, los condimentos a gusto, el azúcar y 1/2 litro de agua.\nVolver a introducir el pollo y dejar cocinar 20 minutos.\n4)- Luego agregar el arroz, el caldito,\nrevolver y dejar cocinar hasta que el arroz este cocido al punto deseado.\nMientras se va cociendo, hay que ir agregando agua y revolviendo\nde tanto en tanto para controlar y evitar que la preparación se seque.\n5)- Finalmente incorporar las arvejas para que se calienten,\nprobar, alinear de sal y listo!...A comer!', '1 pollo trozado en 8\n1 cebolla grande\n1 morrón\n1 tomate')
+plato2 = Plato('Tarta de atun', '1)-Picar la cebolla, el morrón y el ajo y rehogarlos en aceite.\n2)-Cuando la cebolla esté transparente, agregar el tomate fresco picado\ny cocer hasta que tome un color rojo oscuro.\n3)-Agregar el atún y remover hasta integrar.\nIncorporar también la cucharada de puré de tomates.\n4)-Incorporar los huevos batidos y salpimentar.\nAgregar el orégano (muy poco).\n5)-Si te gustan, agregar las aceitunas picadas.\n6)-Colocar todo en una tartera chica.\n7)-Cerrar los bordes y llover con semillas de sésamo arriba.\n8)-Llevar a horno fuerte hasta que el hojaldre se vea dorado.\n¡Listo! Ya tenés tu tarta de atún.', '1 masa de hojaldre\n1/2 cebolla\n1/2 morrón rojo\n1 diente de ajo\n1 tomate chico\n1 cda. de puré de tomates\n2 latas de atún\n1 papa chica\n1 pizca de orégano\n2 huevos\nAceitunas (opcional)\nSemillas de sésamo\nSal, pimienta y aceite.')
 
 listaDePlatos = []
 
@@ -43,9 +43,9 @@ import time
 
 ventana = tk.Tk()
 ventana.title('Gestor de menú semanal')
-ventana.geometry('400x200')
+ventana.geometry('400x400')
 
-etiqueta1 = tk.Label(ventana, text='LUNES:', justify= 'left')
+etiqueta1 = tk.Label(ventana, text='LUNES:')
 etiqueta2 = tk.Label(ventana, text='MARTES:')
 etiqueta3 = tk.Label(ventana, text='MIERCOLES:')
 etiqueta4 = tk.Label(ventana, text='JUEVES:')
@@ -61,7 +61,44 @@ etiqueta5.grid(row=5, column=0)
 etiqueta6.grid(row=6, column=0)
 etiqueta7.grid(row=7, column=0)
 
+etiqueta8 = tk.Label(ventana, text='ALMUERZO')
+etiqueta9 = tk.Label(ventana, text='CENA')
+
+etiqueta8.grid(row=0, column=1)
+etiqueta9.grid(row=0, column=2)
+
+caja1 = tk.Text(ventana, height=2, width=8)
+caja2 = tk.Text(ventana, height=2, width=8)
+caja3 = tk.Text(ventana, height=2, width=8)
+caja4 = tk.Text(ventana, height=2, width=8)
+caja5 = tk.Text(ventana, height=2, width=8)
+caja6 = tk.Text(ventana, height=2, width=8)
+caja7 = tk.Text(ventana, height=2, width=8)
+caja8 = tk.Text(ventana, height=2, width=8)
+caja9 = tk.Text(ventana, height=2, width=8)
+caja10 = tk.Text(ventana, height=2, width=8)
+caja11 = tk.Text(ventana, height=2, width=8)
+caja12 = tk.Text(ventana, height=2, width=8)
+caja13 = tk.Text(ventana, height=2, width=8)
+caja14 = tk.Text(ventana, height=2, width=8)
+
+caja1.grid(row=1, column=1)
+caja2.grid(row=2, column=1)
+caja3.grid(row=3, column=1)
+caja4.grid(row=4, column=1)
+caja5.grid(row=5, column=1)
+caja6.grid(row=6, column=1)
+caja7.grid(row=7, column=1)
+caja8.grid(row=1, column=2)
+caja9.grid(row=2, column=2)
+caja10.grid(row=3, column=2)
+caja11.grid(row=4, column=2)
+caja12.grid(row=5, column=2)
+caja13.grid(row=6, column=2)
+caja14.grid(row=7, column=2)
+
 def organizar():
+    
     pass
 
 boton_organizar = tk.Button(ventana, text='Organizar de forma aleatoria', command=organizar)
@@ -132,34 +169,22 @@ def agregarPlato():
             lista_platos.insert(tk.END, f'{plato.nombre}')
     lista_platos.grid(row=6, column=1)
 
-    # cajaNombre = tk.Text(ventana, width=10, height=10)
-    # cajaIngredientes = tk.Text(ventana, width=10, height=10)
-    # cajaReceta = tk.Text(ventana, width=10, height=10)
-    # cajaNombre.grid(row=6,column=2)
-    # cajaIngredientes.grid(row=6,column=3)
-    # cajaReceta.grid(row=6,column=4)
-    # etiquetaNombre = tk.Label(ventana)
-    # etiquetaNombre.grid(row=6,column=2, ipadx=0, ipady=0)
-    # etiquetaIngredientes = tk.Label(ventana)
-    # etiquetaIngredientes.grid(row=6,column=3, ipadx=0, ipady=0)
-    # etiquetaReceta = tk.Label(ventana)
-    # etiquetaReceta.grid(row=6,column=4, ipadx=0, ipady=0)
-
+    etiquetaNombre = tk.Label(ventana)
+    etiquetaNombre.grid(row=6,column=2)
+    etiquetaIngredientes = tk.Label(ventana)
+    etiquetaIngredientes.grid(row=6,column=3, ipadx=0, ipady=0)
+    etiquetaReceta = tk.Label(ventana)
+    etiquetaReceta.grid(row=6,column=4)
 
     def mostrar():
         seleccion = lista_platos.curselection()
         if seleccion:
              for c in seleccion:
                 if int(c):
-                    etiquetaNombre = tk.Label(ventana, text= listaDePlatos[c].nombre)
                     etiquetaNombre.config(text=listaDePlatos[c].nombre)
-                    etiquetaNombre.grid(row=6,column=2, ipadx=0, ipady=0)
-                    etiquetaIngredientes = tk.Label(ventana, text= listaDePlatos[c].ingredientes)
                     etiquetaIngredientes.config(text=listaDePlatos[c].ingredientes)
-                    etiquetaIngredientes.grid(row=6,column=3, ipadx=0, ipady=0)
-                    etiquetaReceta = tk.Label(ventana, text= listaDePlatos[c].receta)
                     etiquetaReceta.config(text=listaDePlatos[c].receta)
-                    etiquetaReceta.grid(row=6,column=4, ipadx=0, ipady=0)
+                    
 
     boton_mostrar = tk.Button(ventana, text = 'Mostrar', command = mostrar)
     boton_mostrar.grid(row=7, column=1)
@@ -190,7 +215,7 @@ def agregarMenu():
 def modificarPlato():
     ventana = tk.Toplevel()
     ventana.title('Modificar plato' )
-    ventana.geometry ('400x200' )
+    ventana.geometry ('400x400' )
     marco = tk.Frame(ventana)
     marco.pack(padx = 50, pady = 50)
     scrollbar = tk.Scrollbar (marco)
@@ -203,7 +228,11 @@ def modificarPlato():
     scrollbar .config(command = lista.yview)
 
     def Modificar_plato():
-        pass
+        ventana = tk.Toplevel()
+        ventana.title('Agregar menu')
+        ventana.geometry('400x200')
+
+        
 
     boton_modificar = tk.Button(ventana, text = 'Modificar', command = Modificar_plato)
     boton_modificar.pack()
