@@ -4,19 +4,12 @@
 # La idea es que nos mantega al tanto de lo que falte en el almacen para poder realizar los platos del menu
 # Tambien se puede tener dos opciones, organizar la semana de forma aleatoria o personalizada
 
-#### Clases ####
 
-#---- Plato
-#---- ingrediente
-#---- menu
-#---- almacen
-
-##### CODIGO DE PRUEBAS ####
+from Clases import Plato,Ingrediente,Menu,Almacen
+import random
 
 
 # Precargando datos iniciales para mostrar al abrir el programa
-from Clases import Plato,Ingrediente,Menu,Almacen
-import random
 
 plato0 = Plato('---------PLATOS---------')
 plato1 = Plato('Guiso de arroz con pollo', '1)- Dorar el pollo en un poco de aceite. Retirar y reservar.\n2)- Dorar la cebolla picada en la misma olla donde doramos el pollo.\n3)- Agregar el tomate triturado, el puré, los condimentos a gusto, el azúcar y 1/2 litro de agua.\nVolver a introducir el pollo y dejar cocinar 20 minutos.\n4)- Luego agregar el arroz, el caldito,\nrevolver y dejar cocinar hasta que el arroz este cocido al punto deseado.\nMientras se va cociendo, hay que ir agregando agua y revolviendo\nde tanto en tanto para controlar y evitar que la preparación se seque.\n5)- Finalmente incorporar las arvejas para que se calienten,\nprobar, alinear de sal y listo!...A comer!', '1 pollo trozado en 8\n1 cebolla grande\n1 morrón\n1 tomate')
@@ -38,15 +31,16 @@ menu1.platos.append(plato2)
 listaMenus.append(menu1)
 
 # IMPLEMENTANDO LA INTERFAZ GRÁFICA
-
 import tkinter as tk
 import time
 from tkinter import ttk
 
 ventana = tk.Tk()
 ventana.title('Gestor de menú semanal')
-ventana.geometry('600x200')
+ventana.geometry('450x200')
 
+
+# Muestra los dias de la semana en la primer columna; el almuerzo y cena en las siguientes
 etiqueta1 = tk.Label(ventana, text='LUNES:')
 etiqueta2 = tk.Label(ventana, text='MARTES:')
 etiqueta3 = tk.Label(ventana, text='MIERCOLES:')
@@ -56,7 +50,6 @@ etiqueta6 = tk.Label(ventana, text='SABADO:')
 etiqueta7 = tk.Label(ventana, text='DOMINGO:')
 etiqueta8 = tk.Label(ventana, text='ALMUERZO')
 etiqueta9 = tk.Label(ventana, text='CENA')
-
 etiqueta1.grid(row=1, column=0)
 etiqueta2.grid(row=2, column=0)
 etiqueta3.grid(row=3, column=0)
@@ -67,28 +60,59 @@ etiqueta7.grid(row=7, column=0)
 etiqueta8.grid(row=0, column=1)
 etiqueta9.grid(row=0, column=2)
 
+
+# Crea listas desplegables con los platos disponibles y los muestra en pantalla
+lunesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+lunesCena = ttk.Combobox(ventana, state="readonly", width=25)
+martesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+martesCena = ttk.Combobox(ventana, state="readonly", width=25)
+miercolesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+miercolesCena = ttk.Combobox(ventana, state="readonly", width=25)
+juevesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+juevesCena = ttk.Combobox(ventana, state="readonly", width=25)
+viernesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+viernesCena = ttk.Combobox(ventana, state="readonly", width=25)
+sabadoAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+sabadoCena = ttk.Combobox(ventana, state="readonly", width=25)
+domingoAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+domingoCena = ttk.Combobox(ventana, state="readonly", width=25)
+lunesAlmuerzo.grid(row=1,column=1)
+lunesCena.grid(row=1,column=2)
+martesAlmuerzo.grid(row=2,column=1)
+martesCena.grid(row=2,column=2)
+miercolesAlmuerzo.grid(row=3,column=1)
+miercolesCena.grid(row=3,column=2)
+juevesAlmuerzo.grid(row=4,column=1)
+juevesCena.grid(row=4,column=2)
+viernesAlmuerzo.grid(row=5,column=1)
+viernesCena.grid(row=5,column=2)
+sabadoAlmuerzo.grid(row=6,column=1)
+sabadoCena.grid(row=6,column=2)
+domingoAlmuerzo.grid(row=7,column=1)
+domingoCena.grid(row=7,column=2)
+
+# Crea una lista solo con los nombres de los platos
 listaDePlatosNombres = []
+for x in listaDePlatos:
+    listaDePlatosNombres.append(x.nombre)
 
-def organizar():
-    print(len(listaDePlatosNombres))
-    lunesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
-    lunesCena.current(random.randrange(1,len(listaDePlatosNombres)))
-    martesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
-    martesCena.current(random.randrange(1,len(listaDePlatosNombres)))
-    miercolesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
-    miercolesCena.current(random.randrange(1,len(listaDePlatosNombres)))
-    juevesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
-    juevesCena.current(random.randrange(1,len(listaDePlatosNombres)))
-    viernesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
-    viernesCena.current(random.randrange(1,len(listaDePlatosNombres)))
-    sabadoAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
-    sabadoCena.current(random.randrange(1,len(listaDePlatosNombres)))
-    domingoAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
-    domingoCena.current(random.randrange(1,len(listaDePlatosNombres)))
+# Agrega los nombres de los platos a las listas desplegables
+lunesAlmuerzo['values'] = listaDePlatosNombres
+lunesCena['values'] = listaDePlatosNombres
+martesAlmuerzo['values'] = listaDePlatosNombres
+martesCena['values'] = listaDePlatosNombres
+miercolesAlmuerzo['values'] = listaDePlatosNombres
+miercolesCena['values'] = listaDePlatosNombres
+juevesAlmuerzo['values'] = listaDePlatosNombres
+juevesCena['values'] = listaDePlatosNombres
+viernesAlmuerzo['values'] = listaDePlatosNombres
+viernesCena['values'] = listaDePlatosNombres
+sabadoAlmuerzo['values'] = listaDePlatosNombres
+sabadoCena['values'] = listaDePlatosNombres
+domingoAlmuerzo['values'] = listaDePlatosNombres
+domingoCena['values'] = listaDePlatosNombres
 
-boton_organizar = tk.Button(ventana, text='Organizar de forma aleatoria', command=organizar)
-boton_organizar.grid(row=0,column=0)
-
+## Funciones ##
 def agregarPlato():
     ventana = tk.Toplevel()
     ventana.title('Agregar plato')
@@ -167,29 +191,6 @@ def agregarPlato():
     boton_mostrar = tk.Button(ventana, text = 'Mostrar', command = mostrar)
     boton_mostrar.grid(row=7, column=1)
 
-def agregarMenu():
-    ventana = tk.Toplevel()
-    ventana.title('Agregar menu')
-    ventana.geometry('400x200')
-    ingreso_tarea = tk.Entry(ventana)
-    ingreso_tarea.pack()
-    lista_tareas = []
-    def agregar_tarea():
-        tarea = ingreso_tarea.get()
-        if tarea:
-            lista_tareas.insert(tk.END, tarea)
-        ingreso_tarea.delete(0, tk.END)
-    boton_agregar = tk.Button(ventana, text = 'Agregar', command = agregar_tarea)
-    boton_agregar.pack()
-    def eliminar_tarea():
-        seleccion = lista_tareas.curselection()
-        if seleccion:
-            lista_tareas.delete(seleccion)
-    boton_eliminar = tk.Button(ventana, text = 'Eliminar', command = eliminar_tarea)
-    boton_eliminar.pack()
-    lista_tareas = tk.Listbox(ventana)
-    lista_tareas.pack()
-    
 def modificarPlato():
     ventana = tk.Toplevel()
     ventana.title('Modificar plato' )
@@ -217,6 +218,30 @@ def modificarPlato():
 
     ventana.mainloop ()
 
+def agregarMenu():
+    ventana = tk.Toplevel()
+    ventana.title('Agregar menu')
+    ventana.geometry('400x200')
+    ingreso_plato = ttk.Combobox(ventana, state="readonly", width=25)
+    ingreso_plato.pack()
+    ingreso_plato['values'] = listaDePlatosNombres
+    lista_tareas = []
+    def agregar_tarea():
+        tarea = ingreso_plato.get()
+        if tarea:
+            lista_tareas.insert(tk.END, tarea)
+
+    boton_agregar = tk.Button(ventana, text = 'Agregar', command = agregar_tarea)
+    boton_agregar.pack()
+    def eliminar_tarea():
+        seleccion = lista_tareas.curselection()
+        if seleccion:
+            lista_tareas.delete(seleccion)
+    boton_eliminar = tk.Button(ventana, text = 'Eliminar', command = eliminar_tarea)
+    boton_eliminar.pack()
+    lista_tareas = tk.Listbox(ventana)
+    lista_tareas.pack()   
+
 def modificarMenu():
     ventana = tk.Toplevel()
     ventana.title('Modificar menú' )
@@ -232,101 +257,57 @@ def modificarMenu():
     scrollbar .config(command = lista.yview)
     ventana.mainloop ()
 
+def organizar():
+    print(len(listaDePlatosNombres))
+    lunesAlmuerzo['values']=listaDePlatosNombres
+    lunesCena['values'] = listaDePlatosNombres
+    martesAlmuerzo['values'] = listaDePlatosNombres
+    martesCena['values'] = listaDePlatosNombres
+    miercolesAlmuerzo['values'] = listaDePlatosNombres
+    miercolesCena['values'] = listaDePlatosNombres
+    juevesAlmuerzo['values'] = listaDePlatosNombres
+    juevesCena['values'] = listaDePlatosNombres
+    viernesAlmuerzo['values'] = listaDePlatosNombres
+    viernesCena['values'] = listaDePlatosNombres
+    sabadoAlmuerzo['values'] = listaDePlatosNombres
+    sabadoCena['values'] = listaDePlatosNombres
+    domingoAlmuerzo['values'] = listaDePlatosNombres
+    domingoCena['values'] = listaDePlatosNombres
+    lunesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
+    lunesCena.current(random.randrange(1,len(listaDePlatosNombres)))
+    martesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
+    martesCena.current(random.randrange(1,len(listaDePlatosNombres)))
+    miercolesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
+    miercolesCena.current(random.randrange(1,len(listaDePlatosNombres)))
+    juevesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
+    juevesCena.current(random.randrange(1,len(listaDePlatosNombres)))
+    viernesAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
+    viernesCena.current(random.randrange(1,len(listaDePlatosNombres)))
+    sabadoAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
+    sabadoCena.current(random.randrange(1,len(listaDePlatosNombres)))
+    domingoAlmuerzo.current(random.randrange(1,len(listaDePlatosNombres)))
+    domingoCena.current(random.randrange(1,len(listaDePlatosNombres)))
+
+
+# Crea el boton para la organizacion aleatoria
+boton_organizar = tk.Button(ventana, text='Organizar de forma aleatoria', command=organizar)
+boton_organizar.grid(row=8,column=2)
+
+
+# Barra de menu
 barra_menu = tk.Menu(ventana)
 ventana.config(menu=barra_menu)
 menu_principal = tk.Menu(barra_menu)
-barra_menu.add_cascade(label =
-'Opciones', menu=menu_principal)
+barra_menu.add_cascade(label = 'Opciones', menu=menu_principal)
 
 submenu1 = tk.Menu(menu_principal)
-menu_principal.add_cascade(label =
-'Platos', menu=submenu1)
+menu_principal.add_cascade(label = 'Platos', menu=submenu1)
 submenu1.add_command(label = 'Agregar o eliminar', command= agregarPlato)
 submenu1.add_command(label = 'Modificar', command= modificarPlato)
 
 submenu2 = tk.Menu(menu_principal)
-menu_principal.add_cascade(label =
-'Menús', menu=submenu2)
+menu_principal.add_cascade(label = 'Menús', menu=submenu2)
 submenu2.add_command(label = 'Agregar', command= agregarMenu)
 submenu2.add_command(label = 'modificar', command= modificarMenu)
 
-for x in listaDePlatos:
-    listaDePlatosNombres.append(x.nombre)
-
-lunesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
-lunesCena = ttk.Combobox(ventana, state="readonly", width=25)
-martesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
-martesCena = ttk.Combobox(ventana, state="readonly", width=25)
-miercolesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
-miercolesCena = ttk.Combobox(ventana, state="readonly", width=25)
-juevesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
-juevesCena = ttk.Combobox(ventana, state="readonly", width=25)
-viernesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
-viernesCena = ttk.Combobox(ventana, state="readonly", width=25)
-sabadoAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
-sabadoCena = ttk.Combobox(ventana, state="readonly", width=25)
-domingoAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
-domingoCena = ttk.Combobox(ventana, state="readonly", width=25)
-
-
-lunesAlmuerzo.grid(row=1,column=1)
-lunesCena.grid(row=1,column=2)
-martesAlmuerzo.grid(row=2,column=1)
-martesCena.grid(row=2,column=2)
-miercolesAlmuerzo.grid(row=3,column=1)
-miercolesCena.grid(row=3,column=2)
-juevesAlmuerzo.grid(row=4,column=1)
-juevesCena.grid(row=4,column=2)
-viernesAlmuerzo.grid(row=5,column=1)
-viernesCena.grid(row=5,column=2)
-sabadoAlmuerzo.grid(row=6,column=1)
-sabadoCena.grid(row=6,column=2)
-domingoAlmuerzo.grid(row=7,column=1)
-domingoCena.grid(row=7,column=2)
-
-lunesAlmuerzo['values'] = listaDePlatosNombres
-lunesCena['values'] = listaDePlatosNombres
-martesAlmuerzo['values'] = listaDePlatosNombres
-martesCena['values'] = listaDePlatosNombres
-miercolesAlmuerzo['values'] = listaDePlatosNombres
-miercolesCena['values'] = listaDePlatosNombres
-juevesAlmuerzo['values'] = listaDePlatosNombres
-juevesCena['values'] = listaDePlatosNombres
-viernesAlmuerzo['values'] = listaDePlatosNombres
-viernesCena['values'] = listaDePlatosNombres
-sabadoAlmuerzo['values'] = listaDePlatosNombres
-sabadoCena['values'] = listaDePlatosNombres
-domingoAlmuerzo['values'] = listaDePlatosNombres
-domingoCena['values'] = listaDePlatosNombres
-
-
-
-
-# caja1 = tk.Listbox(ventana)
-# caja2 = tk.Listbox(ventana)
-# caja3 = tk.Listbox(ventana)
-# caja4 = tk.Listbox(ventana)
-# caja5 = tk.Listbox(ventana)
-# caja6 = tk.Listbox(ventana)
-# caja1.grid(row=1,column=1)
-# caja2.grid(row=1,column=2)
-# caja3.grid(row=1,column=3)
-# caja4.grid(row=2,column=1)
-# caja5.grid(row=2,column=2)
-# caja6.grid(row=2,column=3)
-
 ventana.mainloop()
-
-# almacen1 = Almacen('Productos')
-
-# almacen1.heladera['queso'] = 1
-
-# print(almacen1)
-
-# almacen1.heladera['salame'] = 1
-
-# print(almacen1)
-
-# almacen1.heladera['salame'] = almacen1.heladera['salame'] - 1
-
-# print(almacen1)

@@ -40,8 +40,3 @@ class Almacen():
 
     def __str__(self):
         return f'{self.heladera}'
-
-
-
-
-
