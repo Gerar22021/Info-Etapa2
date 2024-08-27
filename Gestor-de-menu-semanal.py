@@ -40,6 +40,7 @@ listaMenus.append(menu1)
 
 import tkinter as tk
 import time
+from tkinter import ttk
 
 ventana = tk.Tk()
 ventana.title('Gestor de menú semanal')
@@ -52,6 +53,8 @@ etiqueta4 = tk.Label(ventana, text='JUEVES:')
 etiqueta5 = tk.Label(ventana, text='VIERNES:')
 etiqueta6 = tk.Label(ventana, text='SABADO:')
 etiqueta7 = tk.Label(ventana, text='DOMINGO:')
+etiqueta8 = tk.Label(ventana, text='ALMUERZO')
+etiqueta9 = tk.Label(ventana, text='CENA')
 
 etiqueta1.grid(row=1, column=0)
 etiqueta2.grid(row=2, column=0)
@@ -60,77 +63,114 @@ etiqueta4.grid(row=4, column=0)
 etiqueta5.grid(row=5, column=0)
 etiqueta6.grid(row=6, column=0)
 etiqueta7.grid(row=7, column=0)
-
-etiqueta8 = tk.Label(ventana, text='ALMUERZO')
-etiqueta9 = tk.Label(ventana, text='CENA')
-
 etiqueta8.grid(row=0, column=1)
 etiqueta9.grid(row=0, column=2)
 
-caja1 = tk.Text(ventana, height=2, width=8)
-caja2 = tk.Text(ventana, height=2, width=8)
-caja3 = tk.Text(ventana, height=2, width=8)
-caja4 = tk.Text(ventana, height=2, width=8)
-caja5 = tk.Text(ventana, height=2, width=8)
-caja6 = tk.Text(ventana, height=2, width=8)
-caja7 = tk.Text(ventana, height=2, width=8)
-caja8 = tk.Text(ventana, height=2, width=8)
-caja9 = tk.Text(ventana, height=2, width=8)
-caja10 = tk.Text(ventana, height=2, width=8)
-caja11 = tk.Text(ventana, height=2, width=8)
-caja12 = tk.Text(ventana, height=2, width=8)
-caja13 = tk.Text(ventana, height=2, width=8)
-caja14 = tk.Text(ventana, height=2, width=8)
+listaDePlatosNombres = []
 
-caja1.grid(row=1, column=1)
-caja2.grid(row=2, column=1)
-caja3.grid(row=3, column=1)
-caja4.grid(row=4, column=1)
-caja5.grid(row=5, column=1)
-caja6.grid(row=6, column=1)
-caja7.grid(row=7, column=1)
-caja8.grid(row=1, column=2)
-caja9.grid(row=2, column=2)
-caja10.grid(row=3, column=2)
-caja11.grid(row=4, column=2)
-caja12.grid(row=5, column=2)
-caja13.grid(row=6, column=2)
-caja14.grid(row=7, column=2)
+for x in listaDePlatos:
+    listaDePlatosNombres.append(x.nombre)
+
+lunesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+lunesCena = ttk.Combobox(ventana, state="readonly", width=25)
+martesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+martesCena = ttk.Combobox(ventana, state="readonly", width=25)
+miercolesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+miercolesCena = ttk.Combobox(ventana, state="readonly", width=25)
+juevesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+juevesCena = ttk.Combobox(ventana, state="readonly", width=25)
+viernesAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+viernesCena = ttk.Combobox(ventana, state="readonly", width=25)
+sabadoAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+sabadoCena = ttk.Combobox(ventana, state="readonly", width=25)
+domingoAlmuerzo = ttk.Combobox(ventana, state="readonly", width=25)
+domingoCena = ttk.Combobox(ventana, state="readonly", width=25)
+
+
+lunesAlmuerzo.grid(row=1,column=1)
+lunesCena.grid(row=1,column=2)
+martesAlmuerzo.grid(row=2,column=1)
+martesCena.grid(row=2,column=2)
+miercolesAlmuerzo.grid(row=3,column=1)
+miercolesCena.grid(row=3,column=2)
+juevesAlmuerzo.grid(row=4,column=1)
+juevesCena.grid(row=4,column=2)
+viernesAlmuerzo.grid(row=5,column=1)
+viernesCena.grid(row=5,column=2)
+sabadoAlmuerzo.grid(row=6,column=1)
+sabadoCena.grid(row=6,column=2)
+domingoAlmuerzo.grid(row=7,column=1)
+domingoCena.grid(row=7,column=2)
+
+lunesAlmuerzo['values'] = listaDePlatosNombres
+lunesCena['values'] = listaDePlatosNombres
+martesAlmuerzo['values'] = listaDePlatosNombres
+martesCena['values'] = listaDePlatosNombres
+miercolesAlmuerzo['values'] = listaDePlatosNombres
+miercolesCena['values'] = listaDePlatosNombres
+juevesAlmuerzo['values'] = listaDePlatosNombres
+juevesCena['values'] = listaDePlatosNombres
+viernesAlmuerzo['values'] = listaDePlatosNombres
+viernesCena['values'] = listaDePlatosNombres
+sabadoAlmuerzo['values'] = listaDePlatosNombres
+sabadoCena['values'] = listaDePlatosNombres
+domingoAlmuerzo['values'] = listaDePlatosNombres
+domingoCena['values'] = listaDePlatosNombres
+
+#caja1 = tk.Text(ventana, height=2, width=8)
+# caja2 = tk.Text(ventana, height=2, width=8)
+# caja3 = tk.Text(ventana, height=2, width=8)
+# caja4 = tk.Text(ventana, height=2, width=8)
+# caja5 = tk.Text(ventana, height=2, width=8)
+# caja6 = tk.Text(ventana, height=2, width=8)
+# caja7 = tk.Text(ventana, height=2, width=8)
+# caja8 = tk.Text(ventana, height=2, width=8)
+# caja9 = tk.Text(ventana, height=2, width=8)
+# caja10 = tk.Text(ventana, height=2, width=8)
+# caja11 = tk.Text(ventana, height=2, width=8)
+# caja12 = tk.Text(ventana, height=2, width=8)
+# caja13 = tk.Text(ventana, height=2, width=8)
+# caja14 = tk.Text(ventana, height=2, width=8)
+
+#caja1.grid(row=1, column=1)
+# caja2.grid(row=2, column=1)
+# caja3.grid(row=3, column=1)
+# caja4.grid(row=4, column=1)
+# caja5.grid(row=5, column=1)
+# caja6.grid(row=6, column=1)
+# caja7.grid(row=7, column=1)
+# caja8.grid(row=1, column=2)
+# caja9.grid(row=2, column=2)
+# caja10.grid(row=3, column=2)
+# caja11.grid(row=4, column=2)
+# caja12.grid(row=5, column=2)
+# caja13.grid(row=6, column=2)
+# caja14.grid(row=7, column=2)
 
 def organizar():
-    
     pass
 
 boton_organizar = tk.Button(ventana, text='Organizar de forma aleatoria', command=organizar)
 boton_organizar.grid(row=0,column=0)
 
-# reloj = tk.Label(ventana, font =
-# ('Arial', 60), bg = 'blue', fg = 'white')
-# def hora():
-#     tiempo_actual =time.strftime('%H:%M')
-#     reloj.config(text = tiempo_actual, height=50, width=50)
-# ventana.after(1000, hora)
-# reloj.pack(anchor = 'center')
-# hora()
-
 def agregarPlato():
     ventana = tk.Toplevel()
     ventana.title('Agregar plato')
-    ventana.geometry('400x600')
+    ventana.geometry('850x700')
 
     etiqueta1 = tk.Label(ventana, text= 'Nombre:')
     etiqueta1.grid(row=1,column=1)
-    nombrePlato = tk.Entry(ventana, width=26)
+    nombrePlato = tk.Entry(ventana, width=50)
     nombrePlato.grid(row=1, column=2, padx=0)
     
     etiqueta2 = tk.Label(ventana, text= 'Ingredientes:')
     etiqueta2.grid(row=2,column=1,padx=20)
-    ingreso_ingredientes = tk.Text(ventana, width=20, height=10)
+    ingreso_ingredientes = tk.Text(ventana, width=50, height=10)
     ingreso_ingredientes.grid(row=2, column=2)
 
     etiqueta2 = tk.Label(ventana, text= 'Receta:')
     etiqueta2.grid(row=3,column=1,padx=20)
-    ingreso_receta = tk.Text(ventana, width=20, height=10)
+    ingreso_receta = tk.Text(ventana, width=50, height=10)
     ingreso_receta.grid(row=3, column=2)
     lista_platos = []
 
