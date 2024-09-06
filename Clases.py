@@ -25,7 +25,9 @@ class Menu():
 
     def getPlatos(self, x):
         return self.platos[x].getNombre()
-
+    
+    def __str__(self):
+        return f'{self.nombre}'
 
 class Almacen():
     def __init__(self, nombre) -> None:
