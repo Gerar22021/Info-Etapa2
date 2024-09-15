@@ -47,4 +47,7 @@ while True:
         break
     
     elif op == 1:
+        insertar_datos()
+
+    elif op
 
